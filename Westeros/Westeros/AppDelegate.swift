@@ -15,7 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .cyan
+        
+        // 1. Creamos el modelo
+        let houses = Repository.local.houses
+        
+        // 2. Creamos los controladores
+        var controllers = [UIViewController]()
+        
+        for house in houses {
+            controllers.append( HouseDetailViewController(model : house).wrappedInNavigation())
+        }
+        
+        // Creamos el combinador
+        let tabBarViewController = UITabBarController()
+        tabBarViewController.viewControllers =  controllers
+        
+        // Asignamos el rootVC
+        window?.rootViewController = tabBarViewController
+       
+        window?.makeKeyAndVisible()
         return true
     }
 
