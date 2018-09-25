@@ -11,7 +11,7 @@ import UIKit
 class HouseDetailViewController: UIViewController {
 
     // MARK: - Properties
-    let model: House
+    var model: House
     
     // MARK: - Outlets
     @IBOutlet weak var houseNameLabel: UILabel!
@@ -42,8 +42,10 @@ class HouseDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupUI()
         // Sincronizar modelo y vista
         syncModelWithView()
+      
     }
     
     // MARK: - Sync
@@ -51,8 +53,43 @@ class HouseDetailViewController: UIViewController {
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
-        
         title = model.name
     }
+    
+    func setupUI() {
+        // Crear los botones
+        let wikiButton = UIBarButtonItem(title: "Wiki", style: .plain, target: self, action: #selector(displayWiki))
+        
+        let membersButton = UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayMembers))
+        
+        // Añadir el boton
+        navigationItem.rightBarButtonItems = [membersButton, wikiButton]
+        
+        
+    }
+    
+    @objc func displayWiki(){
+        //Crear el VC destion
+        let wikiViewController = WikiViewController(model: model)
+        
+        // Navegar a el, push
+        navigationController?.pushViewController(wikiViewController, animated: true)
+        
+    }
+    
+    @objc func displayMembers() {
+        let memberListViewController = MemberListViewController(model: model.sortedMembers)
+        
+        // Push
+        navigationController?.pushViewController(memberListViewController, animated: true)
+    }
+}
+
+extension HouseDetailViewController: HouseListViewControllerDelegate {
+    func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
+        self.model = house
+        syncModelWithView()
+    }
+    
     
 }

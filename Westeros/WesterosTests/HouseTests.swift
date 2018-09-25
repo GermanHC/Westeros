@@ -25,8 +25,11 @@ class HouseTests: XCTestCase {
         starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
         lannisterSigil = Sigil(image: UIImage(), description: "Leon Rampante")
         
-        starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
-        lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido")
+        let starkUrl = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
+        let lannisterUrl = URL(string: "https://awoiaf.westeros.org/index.php/House_Lannister")!
+        
+        starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno", url: starkUrl)
+        lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido" , url: lannisterUrl)
    
         robb = Person(name: "Robb", alias: "El joven lobo", house:starkHouse)
         arya = Person(name: "Arya", house: starkHouse)
@@ -73,12 +76,19 @@ class HouseTests: XCTestCase {
         
     }
     
+    func testHouse_AddPersonsVariadic_ReturnsTheCorrectCountOfPersons() {
+        XCTAssertEqual(starkHouse.count, 0 )
+        starkHouse.add(persons: robb, arya, tyrion)
+        XCTAssertEqual(starkHouse.count, 2)
+    }
+    
     func testHouseEquality() {
         // 1. Identidad
         XCTAssertEqual(starkHouse, starkHouse)
         
         // 2. Igualdad
-        let jinxed = House(name: "Stark" , sigil: starkSigil, words: "Se acerca el invierno")
+        let starkUrl = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
+        let jinxed = House(name: "Stark" , sigil: starkSigil, words: "Se acerca el invierno", url: starkUrl)
         XCTAssertEqual(jinxed, starkHouse)
         
         // 3. Desigualdad
@@ -91,5 +101,12 @@ class HouseTests: XCTestCase {
     
     func testHouseComparison(){
         XCTAssertLessThan(lannisterHouse, starkHouse)
+    }
+    
+    func testHouseSortedMembersReturnsASortedArray() {
+//        starkHouse.add(persons: robb, arya)
+//        let stark = Repository.local.house(named: "Stark")
+//
+//        XCTAssertEqual(starkHouse.sortedMembers, stark.sorted())
     }
 }

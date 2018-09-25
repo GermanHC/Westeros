@@ -23,19 +23,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let houses = Repository.local.houses
         
         // 2. Creamos los controladores
-        var controllers = [UIViewController]()
+        // Master
+        let houseListViewController = HouseListViewController(model: houses)
+        let lastHouseSelected = houseListViewController.lastSelectedHouse()
         
-        for house in houses {
-            controllers.append( HouseDetailViewController(model : house).wrappedInNavigation())
-        }
+        // Detail
+        let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
+        
+        // Asignar delegados
+        // Un objeto SOLO puede tener un delegado
+        // Sin embargo, un objeto, SÍ puede ser delegado de varios otros
+        houseListViewController.delegate = houseDetailViewController
         
         // Creamos el combinador
-        let tabBarViewController = UITabBarController()
-        tabBarViewController.viewControllers =  controllers
+        let splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [
+            houseListViewController.wrappedInNavigation(),
+            houseDetailViewController.wrappedInNavigation()
+        ]
+        
+//        var controllers = [UIViewController]()
+        
+//        for house in houses {
+//            controllers.append( HouseDetailViewController(model : house).wrappedInNavigation())
+//        }
+        // FP
+        // Queremos transformar un array d House en un array de HouseDetailVC
+//        let controllers = houses.map { house in
+//            HouseDetailViewController(model: house).wrappedInNavigation()
+//        }
+        // Omitimos el parametro
+//        let controllers = houses.map {
+//            HouseDetailViewController(model: $0).wrappedInNavigation()
+//        }
+//
+//
+//
+//        // Creamos el combinador
+//        let tabBarViewController = UITabBarController()
+//        tabBarViewController.viewControllers =  controllers
+//
+
+        //Crear la tabla (lista)
+       // let houseListViewController = HouseListViewController(model:houses)
         
         // Asignamos el rootVC
-        window?.rootViewController = tabBarViewController
-       
+        //window?.rootViewController = tabBarViewController
+        //window?.rootViewController = houseListViewController.wrappedInNavigation()
+        window?.rootViewController = splitViewController
+        
         window?.makeKeyAndVisible()
         return true
     }

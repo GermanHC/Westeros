@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F15350A215807EA0066EDB2 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F153508215807EA0066EDB2 /* MemberListViewController.swift */; };
+		0F15350B215807EA0066EDB2 /* MemberListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F153509215807EA0066EDB2 /* MemberListViewController.xib */; };
+		0F2708052156DC9500398F61 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2708032156DC9500398F61 /* WikiViewController.swift */; };
+		0F2708062156DC9500398F61 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2708042156DC9500398F61 /* WikiViewController.xib */; };
+		0F2708092157999D00398F61 /* HouseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2708072157999D00398F61 /* HouseListViewController.swift */; };
+		0F27080A2157999D00398F61 /* HouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2708082157999D00398F61 /* HouseListViewController.xib */; };
+		0F27D36F215ADADC00256E29 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27D36E215ADADC00256E29 /* Notification+Name.swift */; };
+		0F330DE021598F570062C6B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F330DDF21598F570062C6B7 /* Constants.swift */; };
 		0F4C84E6214DE74100E3BFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C84E5214DE74100E3BFE0 /* AppDelegate.swift */; };
 		0F4C84ED214DE74300E3BFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C84EC214DE74300E3BFE0 /* Assets.xcassets */; };
 		0F4C84F0214DE74300E3BFE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C84EE214DE74300E3BFE0 /* LaunchScreen.storyboard */; };
@@ -36,6 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F153508215807EA0066EDB2 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
+		0F153509215807EA0066EDB2 /* MemberListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberListViewController.xib; sourceTree = "<group>"; };
+		0F2708032156DC9500398F61 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
+		0F2708042156DC9500398F61 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
+		0F2708072157999D00398F61 /* HouseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewController.swift; sourceTree = "<group>"; };
+		0F2708082157999D00398F61 /* HouseListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseListViewController.xib; sourceTree = "<group>"; };
+		0F27D36E215ADADC00256E29 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		0F330DDF21598F570062C6B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F4C84E2214DE74100E3BFE0 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4C84E5214DE74100E3BFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F4C84EC214DE74300E3BFE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +113,7 @@
 		0F4C84E4214DE74100E3BFE0 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				0F330DDF21598F570062C6B7 /* Constants.swift */,
 				0F88499F21544BAB004E69D0 /* Additions */,
 				0FD5E4EA214F088B001CFF17 /* Controllers */,
 				0FD5E4E9214F07EA001CFF17 /* Resources */,
@@ -143,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0F8849A021544BDB004E69D0 /* UIViewController+Navigation.swift */,
+				0F27D36E215ADADC00256E29 /* Notification+Name.swift */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -160,8 +178,14 @@
 		0FD5E4EA214F088B001CFF17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F2708072157999D00398F61 /* HouseListViewController.swift */,
+				0F2708082157999D00398F61 /* HouseListViewController.xib */,
 				0FD5E4EB214F08D0001CFF17 /* HouseDetailViewController.swift */,
 				0FD5E4EC214F08D0001CFF17 /* HouseDetailViewController.xib */,
+				0F2708032156DC9500398F61 /* WikiViewController.swift */,
+				0F2708042156DC9500398F61 /* WikiViewController.xib */,
+				0F153508215807EA0066EDB2 /* MemberListViewController.swift */,
+				0F153509215807EA0066EDB2 /* MemberListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,7 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD5E4E6214F07C2001CFF17 /* codeIsComing.png in Resources */,
+				0F2708062156DC9500398F61 /* WikiViewController.xib in Resources */,
 				0F4C84F0214DE74300E3BFE0 /* LaunchScreen.storyboard in Resources */,
+				0F27080A2157999D00398F61 /* HouseListViewController.xib in Resources */,
+				0F15350B215807EA0066EDB2 /* MemberListViewController.xib in Resources */,
 				0FD5E4EE214F08D0001CFF17 /* HouseDetailViewController.xib in Resources */,
 				0FD5E4E8214F07C2001CFF17 /* lannister.jpg in Resources */,
 				0F4C84ED214DE74300E3BFE0 /* Assets.xcassets in Resources */,
@@ -272,12 +299,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F56D10121557DC000574F37 /* Repository.swift in Sources */,
+				0F330DE021598F570062C6B7 /* Constants.swift in Sources */,
 				0F8849A121544BDB004E69D0 /* UIViewController+Navigation.swift in Sources */,
 				0FD5E4ED214F08D0001CFF17 /* HouseDetailViewController.swift in Sources */,
 				0F4C850D214DF2E600E3BFE0 /* Sigil.swift in Sources */,
+				0F27D36F215ADADC00256E29 /* Notification+Name.swift in Sources */,
+				0F15350A215807EA0066EDB2 /* MemberListViewController.swift in Sources */,
 				0F4C850B214DEFD800E3BFE0 /* House.swift in Sources */,
 				0F4C84E6214DE74100E3BFE0 /* AppDelegate.swift in Sources */,
+				0F2708052156DC9500398F61 /* WikiViewController.swift in Sources */,
 				0FD5E4E1214EDCF5001CFF17 /* Person.swift in Sources */,
+				0F2708092157999D00398F61 /* HouseListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
