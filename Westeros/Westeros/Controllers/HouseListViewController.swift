@@ -33,6 +33,18 @@ class HouseListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerCustomCell()
+    }
+    
+    func registerCustomCell(){
+        // Siempre que utilicemos celdas personalizadas siempre tenemos que registrarlas
+        let nib = UINib(nibName: "HouseCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "HouseCell")
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,20 +58,20 @@ class HouseListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = "HouseCell"
         
-        // Descubrir el item (casa) que tenemos que mostrar
+        // Descubir el item (casa) que tenemos que mostrar
         let house = model[indexPath.row]
         
         // Crear una celda (o que nos la den del caché)
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
-        if cell==nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! HouseCell
+        
         // Sincronizar celda (view) y casa (model)
-        cell?.imageView?.image = house.sigil.image
-        cell?.textLabel?.text = house.name
+        cell.sigilImageView.image = house.sigil.image
+        cell.nameLabel.text = house.name
+        cell.wordsLabel.text = house.words
         
         // Devolver la celda
-        return cell!
+        return cell
+        
     }
     
     // MARK: - Delegate

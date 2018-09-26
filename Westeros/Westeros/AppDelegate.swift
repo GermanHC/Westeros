@@ -68,9 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // let houseListViewController = HouseListViewController(model:houses)
         
         // Asignamos el rootVC
+        let houseCollectionVC = HouseCollectionViewController(model: houses)
         //window?.rootViewController = tabBarViewController
         //window?.rootViewController = houseListViewController.wrappedInNavigation()
-        window?.rootViewController = splitViewController
+        window?.rootViewController = houseCollectionVC //splitViewController
         
         window?.makeKeyAndVisible()
         return true
