@@ -36,11 +36,7 @@ class HouseTests: XCTestCase {
         
         tyrion = Person(name: "Tyrion", alias: "El enano", house:lannisterHouse)
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
+     
     func testHouseExistence() {
         
         XCTAssertNotNil(starkHouse)

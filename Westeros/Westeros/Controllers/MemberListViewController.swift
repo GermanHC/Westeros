@@ -46,7 +46,7 @@ extension MemberListViewController: UITableViewDataSource {
         
         // Crear una celda (o que nos la den del caché)
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
-        if cell==nil {
+        if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
         }
         

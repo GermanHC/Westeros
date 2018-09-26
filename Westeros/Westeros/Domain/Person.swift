@@ -17,12 +17,6 @@ final class Person {
     
     var alias: String {
         get{
-//            if let alias = _alias {
-//                // Existe y esta guardado dentro de _alias
-//                return alias
-//            } else {
-//                return ""
-//            }
             return _alias ?? "" // Devuelveme _alias, si hay algo, y si no, ""
         }
     }
@@ -64,6 +58,6 @@ extension Person: Equatable {
 
 extension Person: Comparable{
     static func < (lhs: Person, rhs: Person) -> Bool {
-        return lhs.proxyForComparison == rhs.proxyForComparison
+        return lhs.proxyForComparison < rhs.proxyForComparison
     }
 }
