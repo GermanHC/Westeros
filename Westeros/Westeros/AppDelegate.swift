@@ -42,36 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             houseDetailViewController.wrappedInNavigation()
         ]
         
-//        var controllers = [UIViewController]()
-        
-//        for house in houses {
-//            controllers.append( HouseDetailViewController(model : house).wrappedInNavigation())
-//        }
-        // FP
-        // Queremos transformar un array d House en un array de HouseDetailVC
-//        let controllers = houses.map { house in
-//            HouseDetailViewController(model: house).wrappedInNavigation()
-//        }
-        // Omitimos el parametro
-//        let controllers = houses.map {
-//            HouseDetailViewController(model: $0).wrappedInNavigation()
-//        }
-//
-//
-//
-//        // Creamos el combinador
-//        let tabBarViewController = UITabBarController()
-//        tabBarViewController.viewControllers =  controllers
-//
-
-        //Crear la tabla (lista)
-       // let houseListViewController = HouseListViewController(model:houses)
-        
         // Asignamos el rootVC
-        let houseCollectionVC = HouseCollectionViewController(model: houses)
-        //window?.rootViewController = tabBarViewController
-        //window?.rootViewController = houseListViewController.wrappedInNavigation()
-        window?.rootViewController = houseCollectionVC //splitViewController
+        window?.rootViewController = splitViewController
         
         window?.makeKeyAndVisible()
         return true

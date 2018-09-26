@@ -76,18 +76,12 @@ class HouseListViewController: UITableViewController {
     
     // MARK: - Delegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Averiguar la casa en cuestion
         let theHouse = house(at: indexPath.row)
-        
-        // Crear el controlador del detalle de esa casa
-        // let houseDetailViewController = HouseDetailViewController(model: house)
-        
-        // Push
-        //navigationController?.pushViewController(houseDetailViewController, animated: true)
         
         // SIEMPRE emitir la informacion a traves de los dos metodos: delegates y notifications
         // Avisar/Informar al delegado

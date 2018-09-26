@@ -16,10 +16,6 @@
 		0F27D36F215ADADC00256E29 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27D36E215ADADC00256E29 /* Notification+Name.swift */; };
 		0F27D37B215AE66800256E29 /* HouseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27D379215AE66800256E29 /* HouseCell.swift */; };
 		0F27D37C215AE66800256E29 /* HouseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F27D37A215AE66800256E29 /* HouseCell.xib */; };
-		0F27D380215AE8FD00256E29 /* HouseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27D37E215AE8FD00256E29 /* HouseCollectionViewController.swift */; };
-		0F27D381215AE8FD00256E29 /* HouseCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F27D37F215AE8FD00256E29 /* HouseCollectionViewController.xib */; };
-		0F27D384215AEFB700256E29 /* HouseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27D382215AEFB700256E29 /* HouseCollectionViewCell.swift */; };
-		0F27D385215AEFB700256E29 /* HouseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F27D383215AEFB700256E29 /* HouseCollectionViewCell.xib */; };
 		0F330DE021598F570062C6B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F330DDF21598F570062C6B7 /* Constants.swift */; };
 		0F4C84E6214DE74100E3BFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C84E5214DE74100E3BFE0 /* AppDelegate.swift */; };
 		0F4C84ED214DE74300E3BFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F4C84EC214DE74300E3BFE0 /* Assets.xcassets */; };
@@ -59,10 +55,6 @@
 		0F27D36E215ADADC00256E29 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		0F27D379215AE66800256E29 /* HouseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCell.swift; sourceTree = "<group>"; };
 		0F27D37A215AE66800256E29 /* HouseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseCell.xib; sourceTree = "<group>"; };
-		0F27D37E215AE8FD00256E29 /* HouseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewController.swift; sourceTree = "<group>"; };
-		0F27D37F215AE8FD00256E29 /* HouseCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseCollectionViewController.xib; sourceTree = "<group>"; };
-		0F27D382215AEFB700256E29 /* HouseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewCell.swift; sourceTree = "<group>"; };
-		0F27D383215AEFB700256E29 /* HouseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseCollectionViewCell.xib; sourceTree = "<group>"; };
 		0F330DDF21598F570062C6B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F4C84E2214DE74100E3BFE0 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4C84E5214DE74100E3BFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,17 +103,6 @@
 				0F27D37A215AE66800256E29 /* HouseCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		0F27D37D215AE8BF00256E29 /* Extra */ = {
-			isa = PBXGroup;
-			children = (
-				0F27D37E215AE8FD00256E29 /* HouseCollectionViewController.swift */,
-				0F27D37F215AE8FD00256E29 /* HouseCollectionViewController.xib */,
-				0F27D382215AEFB700256E29 /* HouseCollectionViewCell.swift */,
-				0F27D383215AEFB700256E29 /* HouseCollectionViewCell.xib */,
-			);
-			path = Extra;
 			sourceTree = "<group>";
 		};
 		0F4C84D9214DE74100E3BFE0 = {
@@ -211,7 +192,6 @@
 		0FD5E4EA214F088B001CFF17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0F27D37D215AE8BF00256E29 /* Extra */,
 				0F2708072157999D00398F61 /* HouseListViewController.swift */,
 				0F2708082157999D00398F61 /* HouseListViewController.xib */,
 				0FD5E4EB214F08D0001CFF17 /* HouseDetailViewController.swift */,
@@ -309,11 +289,9 @@
 				0FD5E4E6214F07C2001CFF17 /* codeIsComing.png in Resources */,
 				0F2708062156DC9500398F61 /* WikiViewController.xib in Resources */,
 				0F4C84F0214DE74300E3BFE0 /* LaunchScreen.storyboard in Resources */,
-				0F27D381215AE8FD00256E29 /* HouseCollectionViewController.xib in Resources */,
 				0F27080A2157999D00398F61 /* HouseListViewController.xib in Resources */,
 				0F15350B215807EA0066EDB2 /* MemberListViewController.xib in Resources */,
 				0FD5E4EE214F08D0001CFF17 /* HouseDetailViewController.xib in Resources */,
-				0F27D385215AEFB700256E29 /* HouseCollectionViewCell.xib in Resources */,
 				0F27D37C215AE66800256E29 /* HouseCell.xib in Resources */,
 				0FD5E4E8214F07C2001CFF17 /* lannister.jpg in Resources */,
 				0F4C84ED214DE74300E3BFE0 /* Assets.xcassets in Resources */,
@@ -340,9 +318,7 @@
 				0F8849A121544BDB004E69D0 /* UIViewController+Navigation.swift in Sources */,
 				0FD5E4ED214F08D0001CFF17 /* HouseDetailViewController.swift in Sources */,
 				0F4C850D214DF2E600E3BFE0 /* Sigil.swift in Sources */,
-				0F27D380215AE8FD00256E29 /* HouseCollectionViewController.swift in Sources */,
 				0F27D36F215ADADC00256E29 /* Notification+Name.swift in Sources */,
-				0F27D384215AEFB700256E29 /* HouseCollectionViewCell.swift in Sources */,
 				0F15350A215807EA0066EDB2 /* MemberListViewController.swift in Sources */,
 				0F27D37B215AE66800256E29 /* HouseCell.swift in Sources */,
 				0F4C850B214DEFD800E3BFE0 /* House.swift in Sources */,
