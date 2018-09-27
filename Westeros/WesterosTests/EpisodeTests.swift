@@ -1,15 +1,15 @@
 //
-//  SeasonTests.swift
+//  EpisodeTests.swift
 //  WesterosTests
 //
-//  Created by German Hernandez on 26/9/18.
+//  Created by German Hernandez on 28/9/18.
 //  Copyright © 2018 German Hernandez. All rights reserved.
 //
 
 import XCTest
 @testable import Westeros
 
-class SeasonTests: XCTestCase {
+class EpisodeTests: XCTestCase {
 
     var firstSeason: Season!
     var secondSeason: Season!
@@ -33,48 +33,31 @@ class SeasonTests: XCTestCase {
         episode2SecondSeason = Episode(overAllNumber: 4, inSeasonNumber: 2, recap: Utils.getRecap(recapEpisodeNum: 12), originallyAiredDate: "24/04/2011".getDateFromString(), season: firstSeason, title: "Title4")
     }
     
-    func testSeasonExistence() {
-        XCTAssertNotNil(firstSeason)
+    func testEpisodeExistence() {
+        XCTAssertNotNil(episode1FirstSeason)
+        
+        XCTAssertNotNil(episode2SecondSeason)
     }
     
-    // Given - When - Then
-    func testSeason_AddEpisodes_ReturnsTheCorrectCountOfEpisods() {
-        XCTAssertEqual(firstSeason.count, 0)
-        
-        firstSeason.add(episode: episode1FirstSeason)
-        firstSeason.add(episode: episode1FirstSeason)
-        XCTAssertEqual(firstSeason.count, 1)
-        
-        firstSeason.add(episode: episode2FirstSeason)
-        firstSeason.add(episode: episode1SecondSeason)
-        XCTAssertEqual(firstSeason.count, 2)
-        
+    func testEpisodeFullName() {
+        XCTAssertEqual(episode1FirstSeason.fullName, "Episode 1")
+        XCTAssertEqual(episode2FirstSeason.fullName, "Episode 2")
     }
     
-    func testSeason_AddEpisodesInBatches_ReturnsTheCorrectCountOfEpisodes() {
-        XCTAssertEqual(firstSeason.count, 0 )
-        firstSeason.add(episodes: episode1FirstSeason, episode2FirstSeason, episode1SecondSeason)
-        XCTAssertEqual(firstSeason.count, 2)
-    }
-    
-    func testSeasonEquality() {
+    func testEpisodeEquality() {
         // 1. Identidad
-        XCTAssertEqual(firstSeason, firstSeason)
+        XCTAssertEqual(episode1FirstSeason, episode1FirstSeason)
         
         // 2. Igualdad
-        let  fakeSeason = Season(originallyAiredYear: "17/04/2011".getDateFromString(), numberSeason: 1, wikiUrl:URL(string: "https://en.wikipedia.org/wiki/Game_of_Thrones_(season_1)")!)
-        XCTAssertEqual(fakeSeason, firstSeason)
+        let episode1FakeFirstSeason =  Episode(overAllNumber: 1, inSeasonNumber: 1, recap: Utils.getRecap(recapEpisodeNum: 1), originallyAiredDate: "17/04/2011".getDateFromString(), season: firstSeason, title: "Title1")
+        
+        XCTAssertEqual(episode1FirstSeason, episode1FakeFirstSeason)
         
         // 3. Desigualdad
-        XCTAssertNotEqual(firstSeason, secondSeason)
+        XCTAssertNotEqual(episode1FirstSeason, episode2FirstSeason)
     }
     
-    func testSeasonHashable() {
-        XCTAssertNotNil(firstSeason.hashValue)
+    func testPersonComparison() {
+        XCTAssertGreaterThan(episode2FirstSeason, episode1FirstSeason)
     }
-    
-    func testSeasonComparison(){
-        XCTAssertLessThan(firstSeason, secondSeason)
-    }
-   
 }

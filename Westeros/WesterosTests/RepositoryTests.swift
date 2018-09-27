@@ -11,9 +11,11 @@ import XCTest
 
 class RepositoryTests: XCTestCase {
     var localHouses: [House]!
+    var houseRepo: HouseFactory!
     
     override func setUp() {
-        localHouses = Repository.local.houses
+        houseRepo = HouseFactory()
+        localHouses = houseRepo.getAll()
     }
 
     override func tearDown() {
@@ -21,7 +23,7 @@ class RepositoryTests: XCTestCase {
     }
 
     func testLocalRepositoryExistence(){
-        XCTAssertNotNil(Repository.local)
+        XCTAssertNotNil(houseRepo)
     }
 
     func testLocalRepositoryHousesCreation() {
@@ -35,19 +37,19 @@ class RepositoryTests: XCTestCase {
     }
     
     func testLocalRepositoryReturnsHousesByNameCaseInsensitively() {
-        let stark = Repository.local.house(named: "sTaRk")
+        let stark = houseRepo.get(named: "sTaRk")
         
         XCTAssertEqual(stark?.name, "Stark")
         
-        let keepcoding = Repository.local.house(named: "Keepcoding")
+        let keepcoding =  houseRepo.get(named: "Keepcoding")
         XCTAssertNil(keepcoding)
     }
     
     func testLocalRepositoryHouseFiltering() {
-        var filtered = Repository.local.houses(filteredBy: {$0.count == 1})
+        var filtered =  houseRepo.getFiltered(filteredBy: {$0.count == 1})
         XCTAssertEqual(filtered.count, 1)
         
-        filtered = Repository.local.houses(filteredBy: {$0.count == 100})
+        filtered = houseRepo.getFiltered(filteredBy: {$0.count == 100})
         XCTAssertTrue(filtered.isEmpty)
     }
 }

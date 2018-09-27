@@ -14,5 +14,6 @@ enum Constants {
     static let LastHouseKey = "LastHouseKey"
     static let PrefixSeason = "Season"
     static let PrefixEpisode = "Episode"
+    static let RecapNotFound = "Have Not Found Any Recap"
 }
 

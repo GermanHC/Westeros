@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .cyan
         
         // 1. Creamos el modelo
-        let houses = Repository.local.houses
+        let houseRepo = HouseFactory()
+        
+        let houses = houseRepo.getAll()
         
         // 2. Creamos los controladores
         // Master
