@@ -12,8 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var tabBarViewController: UITabBarController?
+    var splitViewController: UISplitViewController?
+    var houseDetailViewController: HouseDetailViewController?
+    var seasonDetailViewController: SeasonDetailViewController?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -21,31 +24,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 1. Creamos el modelo
         let houseRepo = HouseFactory()
-        
         let houses = houseRepo.getAll()
+        let seasonRepo = SeasonFactory()
+        let seasons = seasonRepo.getAll()
         
         // 2. Creamos los controladores
         // Master
         let houseListViewController = HouseListViewController(model: houses)
         let lastHouseSelected = houseListViewController.lastSelectedHouse()
         
+       // let memberListViewController = MemberListViewController(model:)
+        let seasonListViewController = SeasonListViewController(model:seasons)
+        let lastSeasonSelected = seasonListViewController.lastSelectedSeason()
+       
         // Detail
-        let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
+        houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
+        seasonDetailViewController = SeasonDetailViewController(model: lastSeasonSelected)
         
         // Asignar delegados
         // Un objeto SOLO puede tener un delegado
         // Sin embargo, un objeto, SÍ puede ser delegado de varios otros
         houseListViewController.delegate = houseDetailViewController
+        seasonListViewController.delegate = seasonDetailViewController
         
         // Creamos el combinador
-        let splitViewController = UISplitViewController()
-        splitViewController.viewControllers = [
-            houseListViewController.wrappedInNavigation(),
-            houseDetailViewController.wrappedInNavigation()
-        ]
+        tabBarViewController = UITabBarController()
+        tabBarViewController?.viewControllers = [seasonListViewController.wrappedInNavigation(), houseListViewController.wrappedInNavigation()]
+        tabBarViewController?.delegate = self
+        tabBarViewController?.selectedIndex = UserDefaults.standard.integer(forKey: Constants.LastTapSelected)
+        
+        splitViewController = UISplitViewController()
+        splitViewController?.viewControllers = [
+            tabBarViewController,
+            lastTabSelected()
+            ] as! [UIViewController]
         
         // Asignamos el rootVC
         window?.rootViewController = splitViewController
+        
         
         window?.makeKeyAndVisible()
         return true
@@ -74,5 +90,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+ 
+extension AppDelegate: UITabBarControllerDelegate{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let selectedTab = tabBarController.selectedIndex
+        splitViewController?.viewControllers[1] = tabNav(at: selectedTab).wrappedInNavigation()
+       
+        // Guardamos el ultimo tab seleccionado
+        saveLastSelectedTab(at: selectedTab)
+    }
+}
+
+extension AppDelegate {
+    func saveLastSelectedTab(at position: Int) {
+        // Aqui vamos a guardar la ultima casa seleccionada
+        let userDefaults = UserDefaults.standard
+        
+        // Lo insertamos en el diccionario de User Defaults
+        userDefaults.set(position, forKey: Constants.LastTapSelected)
+        
+        // Guardar
+        userDefaults.synchronize() // Por si acaso
+    }
+    
+    func lastTabSelected() -> UINavigationController {
+        // Averiguar cual es la ultima row seleccionada (si la hay)
+        let pos = UserDefaults.standard.integer(forKey: Constants.LastTapSelected) // Value 0 es el default
+        return tabNav(at: pos).wrappedInNavigation()
+    }
+    
+    func tabNav(at position: Int) -> UIViewController {
+        switch position {
+        case 0:
+            return seasonDetailViewController!
+        case 1:
+            return houseDetailViewController!
+        default:
+            return seasonDetailViewController!
+         }
+       
+    }
 }
 

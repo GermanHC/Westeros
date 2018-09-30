@@ -20,6 +20,7 @@ protocol Repository {
 }
 
 final class HouseFactory : Repository{
+    
     func getAll() -> [House] {
         // Houses creation here
         let starkSigil = Sigil(image: UIImage(named: "codeIsComing.png")!, description: "Lobo Huargo")
@@ -35,23 +36,27 @@ final class HouseFactory : Repository{
         let targaryenHouse = House(name: "Targaryen", sigil: targaryenSigil, words: "Fuego y Sangre", url: targaryenUrl)
         
         // Characters creation
-        let robb = Person(name: "Robb", alias: "El JovenLobo", house: starkHouse)
-        let arya = Person(name: "Arya", house: starkHouse)
-        let tyrion = Person(name: "Tyrion", alias: "El enano", house: lannisterHouse)
-        let cersei = Person(name: "Cersei", house: lannisterHouse)
-        let jaime = Person(name: "Jaime", alias: "El matarreyes", house: lannisterHouse)
-        let dani = Person(name: "Daenerys", alias: "Madre de dragones", house: targaryenHouse)
+        _ = Person(name: "Robb", alias: "El JovenLobo", house: starkHouse)
+        _ = Person(name: "Arya", house: starkHouse)
+        _ = Person(name: "Tyrion", alias: "El enano", house: lannisterHouse)
+        _ = Person(name: "Cersei", house: lannisterHouse)
+        _ = Person(name: "Jaime", alias: "El matarreyes", house: lannisterHouse)
+        _ = Person(name: "Daenerys", alias: "Madre de dragones", house: targaryenHouse)
         
         // Add characters to houses
-        starkHouse.add(persons: arya, robb)
-        lannisterHouse.add(persons: tyrion, cersei, jaime)
-        targaryenHouse.add(person: dani)
+        //starkHouse.add(persons: arya, robb)
+        //lannisterHouse.add(persons: tyrion, cersei, jaime)
+        //targaryenHouse.add(person: dani)
         
-        return [starkHouse,lannisterHouse, targaryenHouse].sorted()
+        return [starkHouse, lannisterHouse, targaryenHouse].sorted()
     }
     
     func get(named name: String) -> House? {
         return getAll().first(where: {$0.name.uppercased() == name.uppercased()})
+    }
+    
+    func get(named name: housesNames) -> House? {
+        return getAll().first(where: {$0.name.uppercased() == String(describing: name).uppercased()})
     }
     
     func getFiltered(filteredBy filter: (House) -> Bool) -> [House] {
@@ -74,7 +79,7 @@ final class SeasonFactory: Repository{
         
         let episode1SecondSeason = Episode(overAllNumber: 11, inSeasonNumber: 1, recap: Utils.getRecap(recapEpisodeNum: 11), originallyAiredDate: "01/04/2011".getDateFromString(), season: secondSeason, title: "The North Remembers")
         
-        let episode2SecondSeason = Episode(overAllNumber: 2, inSeasonNumber: 2, recap: Utils.getRecap(recapEpisodeNum: 12), originallyAiredDate: "08/04/2011".getDateFromString(), season: secondSeason, title: "The Night Lands")
+        let episode2SecondSeason = Episode(overAllNumber: 12, inSeasonNumber: 2, recap: Utils.getRecap(recapEpisodeNum: 12), originallyAiredDate: "08/04/2011".getDateFromString(), season: secondSeason, title: "The Night Lands")
         
         let thirdSeason = Season(originallyAiredYear: "31/03/2013".getDateFromString(), numberSeason: 3, wikiUrl:URL(string: "https://en.wikipedia.org/wiki/Game_of_Thrones_(season_3)")!)
         

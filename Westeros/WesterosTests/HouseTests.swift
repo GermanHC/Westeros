@@ -33,7 +33,7 @@ class HouseTests: XCTestCase {
    
         robb = Person(name: "Robb", alias: "El joven lobo", house:starkHouse)
         arya = Person(name: "Arya", house: starkHouse)
-        
+       
         tyrion = Person(name: "Tyrion", alias: "El enano", house:lannisterHouse)
     }
      
@@ -52,18 +52,7 @@ class HouseTests: XCTestCase {
     
     // Given - When - Then
     func testHouse_AddPersons_ReturnsTheCorrectCountOfPersons() {
-        XCTAssertEqual(starkHouse.count, 0)
-        
-        starkHouse.add(person: robb)
-        starkHouse.add(person: robb)
-        starkHouse.add(person: robb)
-        XCTAssertEqual(starkHouse.count, 1)
-        
-        starkHouse.add(person: arya)
         XCTAssertEqual(starkHouse.count, 2)
-        
-        XCTAssertEqual(lannisterHouse.count, 0)
-        lannisterHouse.add(person: tyrion)
         
         XCTAssertEqual(lannisterHouse.count, 1)
         
@@ -73,7 +62,7 @@ class HouseTests: XCTestCase {
     }
     
     func testHouse_AddPersonsVariadic_ReturnsTheCorrectCountOfPersons() {
-        XCTAssertEqual(starkHouse.count, 0 )
+        XCTAssertEqual(starkHouse.count, 2 )
         starkHouse.add(persons: robb, arya, tyrion)
         XCTAssertEqual(starkHouse.count, 2)
     }
@@ -85,6 +74,9 @@ class HouseTests: XCTestCase {
         // 2. Igualdad
         let starkUrl = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
         let jinxed = House(name: "Stark" , sigil: starkSigil, words: "Se acerca el invierno", url: starkUrl)
+        robb = Person(name: "Robb", alias: "El joven lobo", house:jinxed)
+        arya = Person(name: "Arya", house: jinxed)
+        
         XCTAssertEqual(jinxed, starkHouse)
         
         // 3. Desigualdad
@@ -100,9 +92,6 @@ class HouseTests: XCTestCase {
     }
     
     func testHouseSortedMembersReturnsASortedArray() {
-//        starkHouse.add(persons: robb, arya)
-//        let stark = Repository.local.house(named: "Stark")
-//
-//        XCTAssertEqual(starkHouse.sortedMembers, stark.sorted())
+       XCTAssertEqual(starkHouse.sortedMembers, starkHouse.members.sorted())
     }
 }

@@ -58,9 +58,9 @@ class HouseDetailViewController: UIViewController {
     
     func setupUI() {
         // Crear los botones
-        let wikiButton = UIBarButtonItem(title: "Wiki", style: .plain, target: self, action: #selector(displayWiki))
+        let wikiButton = UIBarButtonItem(title: Constants.titleWiki, style: .plain, target: self, action: #selector(displayWiki))
         
-        let membersButton = UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayMembers))
+        let membersButton = UIBarButtonItem(title: Constants.titleMembers, style: .plain, target: self, action: #selector(displayMembers))
         
         // Añadir el boton
         navigationItem.rightBarButtonItems = [membersButton, wikiButton]
@@ -78,7 +78,7 @@ class HouseDetailViewController: UIViewController {
     }
     
     @objc func displayMembers() {
-        let memberListViewController = MemberListViewController(model: model.sortedMembers)
+        let memberListViewController = MemberListVC(model: model.sortedMembers)
         
         // Push
         navigationController?.pushViewController(memberListViewController, animated: true)
@@ -90,6 +90,4 @@ extension HouseDetailViewController: HouseListViewControllerDelegate {
         self.model = house
         syncModelWithView()
     }
-    
-    
-}
+ }

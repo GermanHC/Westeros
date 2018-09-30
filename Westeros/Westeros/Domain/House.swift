@@ -18,6 +18,10 @@ final class House {
     let wikiUrl: URL
     private var _members: Members
     
+    var members:[Person] {
+        return Array(_members)
+    }
+    
     var sortedMembers: [Person]{
         return _members.sorted()
     }

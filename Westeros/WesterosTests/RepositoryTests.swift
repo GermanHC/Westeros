@@ -13,9 +13,14 @@ class RepositoryTests: XCTestCase {
     var localHouses: [House]!
     var houseRepo: HouseFactory!
     
+    var localSeason: [Season]!
+    var seasonRepo: SeasonFactory!
+    
     override func setUp() {
         houseRepo = HouseFactory()
         localHouses = houseRepo.getAll()
+        seasonRepo = SeasonFactory()
+        localSeason = seasonRepo.getAll()
     }
 
     override func tearDown() {
@@ -24,6 +29,7 @@ class RepositoryTests: XCTestCase {
 
     func testLocalRepositoryExistence(){
         XCTAssertNotNil(houseRepo)
+        XCTAssertNotNil(seasonRepo)
     }
 
     func testLocalRepositoryHousesCreation() {
@@ -32,8 +38,19 @@ class RepositoryTests: XCTestCase {
         XCTAssertEqual(localHouses.count, 3)
     }
     
-    func testLocalRepositoryReturnsSOrtedArrayOfHouses(){
+    func testLocalRepositorySeasonCreation() {
+        XCTAssertNotNil(localSeason)
+        
+        XCTAssertEqual(localSeason.count, 7)
+    }
+    
+    
+    func testLocalRepositoryReturnsSortedArrayOfHouses(){
         XCTAssertEqual(localHouses, localHouses.sorted())
+    }
+    
+    func testLocalRepositoryReturnsSortedArrayOfSeason(){
+        XCTAssertEqual(localSeason, localSeason.sorted())
     }
     
     func testLocalRepositoryReturnsHousesByNameCaseInsensitively() {
@@ -43,6 +60,12 @@ class RepositoryTests: XCTestCase {
         
         let keepcoding =  houseRepo.get(named: "Keepcoding")
         XCTAssertNil(keepcoding)
+    }
+    
+    func testLocalRepositoryReturnsHousesByNameEnum() {
+        let stark = houseRepo.get(named: housesNames.stark)
+        
+        XCTAssertEqual(stark?.name, "Stark")
     }
     
     func testLocalRepositoryHouseFiltering() {
